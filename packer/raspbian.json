@@ -1,0 +1,27 @@
+  
+{
+    "variables": {
+      "img_mount_path": "{{ env `IMAGE_MOUNT_PATH`}}",
+      "playbook_path": "{{ env `PLAYBOOK_PATH`}}",
+      "ansible_host_file": "{{ env `ANSIBLE_HOST_FILE`}}",
+      "output_filename": "{{ env `OUTPUT_FILENAME`}}"
+    },
+    "builders": [
+      {
+        "type": "arm-image",
+        "iso_url": "https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-03-25/2021-03-04-raspios-buster-armhf.zip",
+        "iso_checksum": "sha256:d3de1a33d2d4f4990345b6369960b04c70b577519e6f25f4d7ec601e305e932a",
+        "mount_path": "{{ user `img_mount_path` }}",
+        "target_image_size": 4294967296,
+        "output_filename": "{{ user `output_filename` }}"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell-local",
+        "inline": [
+          "sudo -E ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 ansible-playbook -vvv -c chroot '{{ user `playbook_path` }}'"
+        ]
+      }
+    ]
+  }

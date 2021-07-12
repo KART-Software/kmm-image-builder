@@ -1,0 +1,6 @@
+---
+- name: apt update
+  ansible.builtin.apt:
+    update_cache: yes
+    autoclean: yes
+    upgrade: "full"

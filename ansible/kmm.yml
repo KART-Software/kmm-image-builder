@@ -1,0 +1,26 @@
+  
+---
+- 
+  hosts: all
+  become: yes
+  roles:
+    - role: apt
+      tags: apt
+    - role: pipenv
+      tags: pipenv
+#    - role: ssm
+#      tags: ssm
+#    - role: mackerel
+#      tags: mackerel
+#    - role: ram
+#      tags: ram
+#    - role: raspi-config
+#      tags: raspi-config
+#    - role: hostname
+#      tags: hostname
+#    - role: git
+#      tags: git
+#    - role: sshd
+#      tags: sshd
+#    - role: hardware-manager
+#      tags: hardware-manager

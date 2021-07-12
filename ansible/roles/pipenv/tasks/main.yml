@@ -1,0 +1,9 @@
+---
+- name: install python3 pip
+  apt:
+    name: python3-pip
+- name: install pipenv
+  pip:
+    executable: pip3
+    name:
+      - pipenv
